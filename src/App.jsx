@@ -1,5 +1,6 @@
 import Counter from './counter';
-import './App.css';
+import User from './user';
+import './App.css'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <Welcome></Welcome>
+      <User></User>
       <Counter></Counter>
       <button onClick={handelClick} >Click me</button>
       <button onClick={() => handelAdd5(3)} >Add 5</button>
