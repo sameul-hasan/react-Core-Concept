@@ -2,7 +2,7 @@ import Counter from './counter';
 import User from './user';
 import Friends from './friends';
 import './App.css'
-import { Suspense, use } from 'react';
+import { Suspense } from 'react';
 
 const userData = fetch('https://jsonplaceholder.typicode.com/users')
   .then(res => res.json())
