@@ -1,8 +1,20 @@
 import Counter from './counter';
 import User from './user';
+import Friends from './friends';
 import './App.css'
+import { Suspense, use } from 'react';
+
+const userData = fetch('https://jsonplaceholder.typicode.com/users')
+  .then(res => res.json())
+
+const friendsData = async() => {
+  const data = await fetch ('https://jsonplaceholder.typicode.com/users');
+  return data.json();
+}
 
 function App() {
+
+  const dost = friendsData();
 
   function handelClick(){
     alert(`I am clicked`)
@@ -18,7 +30,12 @@ function App() {
   return (
     <>
       <Welcome></Welcome>
-      <User></User>
+      <Suspense fallback={<h2>friends are coming...</h2>}> 
+        <Friends dost = {dost}></Friends>
+      </Suspense>
+      <Suspense fallback={<h2>Loading users...</h2>}> 
+        <User userData = {userData}></User>
+      </Suspense>
       <Counter></Counter>
       <button onClick={handelClick} >Click me</button>
       <button onClick={() => handelAdd5(3)} >Add 5</button>
